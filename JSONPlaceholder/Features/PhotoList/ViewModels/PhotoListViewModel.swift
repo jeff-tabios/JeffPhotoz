@@ -15,6 +15,7 @@ final class PhotoListViewModel: ObservableObject {
 
     private let apiService: APIService
     private var cancellables = Set<AnyCancellable>()
+    private var currentPage = 0
 
     init(apiService: APIService = RealAPIService()) {
         self.apiService = apiService
@@ -28,9 +29,10 @@ final class PhotoListViewModel: ObservableObject {
         }
     }
 
-    func fetchPhotos(page: Int = 1) {
+    func fetchPhotos() {
         self.isLoading = false
-        apiService.fetchPhotos(page: page)
+        currentPage += 1
+        apiService.fetchPhotos(page: currentPage)
             .receive(on: DispatchQueue.main) // Ensure UI updates on the main thread
             .sink(receiveCompletion: { completion in
                 switch completion {
