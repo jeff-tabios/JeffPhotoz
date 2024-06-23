@@ -31,7 +31,7 @@ final class PhotoListViewModel: ObservableObject {
 
     func fetchPhotos() {
         self.isLoading = false
-        currentPage += 1
+        currentPage = photos.count / 20 + 1
         apiService.fetchPhotos(page: currentPage)
             .receive(on: DispatchQueue.main) // Ensure UI updates on the main thread
             .sink(receiveCompletion: { completion in
