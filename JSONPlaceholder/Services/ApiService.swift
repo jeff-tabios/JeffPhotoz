@@ -12,7 +12,7 @@ protocol APIService {
     func fetchPhotos(page: Int) -> AnyPublisher<[Photo], Error>
 }
 
-class RealAPIService: APIService {
+final class RealAPIService: APIService {
     private let baseUrl = "https://jsonplaceholder.typicode.com/photos"
 
     func fetchPhotos(page: Int) -> AnyPublisher<[Photo], Error> {

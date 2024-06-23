@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-class ImageLoader: ObservableObject {
+final class ImageLoader: ObservableObject {
     @Published var image: UIImage?
 
     private let url: URL?
@@ -67,7 +67,7 @@ struct AsyncImageLoaderView: View {
 }
 
 // Simple in-memory cache
-class ImageCache {
+final class ImageCache {
     static let shared = ImageCache()
     private var cache = NSCache<NSURL, UIImage>()
 

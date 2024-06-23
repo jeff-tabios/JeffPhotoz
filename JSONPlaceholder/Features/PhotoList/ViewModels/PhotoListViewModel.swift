@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class PhotoListViewModel: ObservableObject {
+final class PhotoListViewModel: ObservableObject {
     @Published var photos: [Photo] = []
     @Published var errorMessage: AppError?
     @Published var isLoading = false
